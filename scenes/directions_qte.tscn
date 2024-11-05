@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b630uxqwyiyqt"]
+
+[ext_resource type="Script" path="res://scripts/directions_qte.gd" id="1_61md6"]
+
+[node name="DirectionsQTE" type="Node"]
+script = ExtResource("1_61md6")
