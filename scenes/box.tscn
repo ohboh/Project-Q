@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=4 uid="uid://dgal26ywsk8v5"]
+[gd_scene load_steps=8 format=4 uid="uid://dgal26ywsk8v5"]
 
 [ext_resource type="Texture2D" uid="uid://6rlc24dgwyfc" path="res://models/box_Image_0.jpg" id="1_0fctp"]
+[ext_resource type="Script" path="res://scenes/box.gd" id="1_qpygv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qxpmy"]
 resource_name = "lambert1"
@@ -84,7 +85,9 @@ _data = {
 "Open": SubResource("Animation_icr0w")
 }
 
-[node name="box" type="Node3D"]
+[node name="box" type="Node3D" node_paths=PackedStringArray("anim_player")]
+script = ExtResource("1_qpygv")
+anim_player = NodePath("box/AnimationPlayer")
 
 [node name="box" type="Node3D" parent="."]
 transform = Transform3D(-0.15, 0, -2.26494e-08, 0, 0.15, 0, 2.26494e-08, 0, -0.15, 0, 0, 0)

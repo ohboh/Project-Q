@@ -1,8 +1,0 @@
-hello
-\do you wanna play?
-- no
-	very well then...
-	do Quitter.quit()
-- yes
-	only one rule...
-	DO NOT FOLLOW MY FINGER

@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8038gt7fd1c1"]
+[gd_scene load_steps=14 format=3 uid="uid://b8038gt7fd1c1"]
 
+[ext_resource type="Script" path="res://scenes/world.gd" id="1_3bc4i"]
 [ext_resource type="PackedScene" uid="uid://o4dlkvehjgla" path="res://scenes/arms.tscn" id="1_hcl8x"]
 [ext_resource type="PackedScene" uid="uid://dgal26ywsk8v5" path="res://scenes/box.tscn" id="2_8cxwn"]
 [ext_resource type="PackedScene" uid="uid://cdijw26kfifdc" path="res://models/old_table.glb" id="3_4swmn"]
@@ -58,16 +59,118 @@ tracks/1/keys = {
 "values": [Vector3(0, -0.0222838, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_xcc4r"]
+resource_name = "up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.122173, 0, 0), Vector3(0.488692, 0, 0), Vector3(-0.122173, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pg7hy"]
+resource_name = "down"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.122173, 0, 0), Vector3(-0.610865, 0, 0), Vector3(-0.122173, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_83xyt"]
+resource_name = "left"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.122173, 0, 0), Vector3(-0.122173, 0.488692, 0), Vector3(-0.122173, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7ejdd"]
+resource_name = "right"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.122173, 0, 0), Vector3(-0.122173, -0.488692, 0), Vector3(-0.122173, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ikp5b"]
+resource_name = "focused"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.603552, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.113771, -0.472162)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7364w"]
 _data = {
 "RESET": SubResource("Animation_o5smd"),
-"pan_out": SubResource("Animation_c7mt2")
+"down": SubResource("Animation_pg7hy"),
+"focused": SubResource("Animation_ikp5b"),
+"left": SubResource("Animation_83xyt"),
+"pan_out": SubResource("Animation_c7mt2"),
+"right": SubResource("Animation_7ejdd"),
+"up": SubResource("Animation_xcc4r")
 }
 
 [sub_resource type="Environment" id="Environment_vo0op"]
 background_mode = 1
 
-[node name="world" type="Node3D"]
+[node name="world" type="Node3D" node_paths=PackedStringArray("box", "player_animator", "arms")]
+script = ExtResource("1_3bc4i")
+box = NodePath("box")
+player_animator = NodePath("player/AnimationPlayer")
+arms = NodePath("arms")
 
 [node name="player" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.992593, 0.121488, 0, -0.121488, 0.992593, 0, -0.0222838, 0)
@@ -89,7 +192,7 @@ transform = Transform3D(0.015, 0, 0, 0, 0.015, 0, 0, 0, 0.015, 0, -1.7202, -1.20
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_vo0op")
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+[node name="light" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.037, 0)
 shadow_enabled = true
 spot_angle = 40.0

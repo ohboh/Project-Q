@@ -1,6 +1,7 @@
-[gd_scene load_steps=71 format=4 uid="uid://o4dlkvehjgla"]
+[gd_scene load_steps=72 format=4 uid="uid://o4dlkvehjgla"]
 
 [ext_resource type="Texture2D" uid="uid://dnycqk64m2vr4" path="res://models/PSX_First_Person_Arms_arms.png" id="1_kkvg8"]
+[ext_resource type="Script" path="res://scenes/arms.gd" id="1_n4mtf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_80vn6"]
 resource_name = "arms"
@@ -2557,6 +2558,20 @@ tracks/55/path = NodePath("arms_armature/Skeleton3D:f_pinky.03.R")
 tracks/55/interp = 1
 tracks/55/loop_wrap = true
 tracks/55/keys = PackedFloat32Array(0, 1, 0.0394397, 0.0148376, -0.0241185, 0.998821, 0.0333333, 1, 0.0394397, 0.0148376, -0.0241185, 0.998821, 0.0666667, 1, 0.140611, 0.00821058, 0.0116787, 0.989962, 0.1, 1, 0.21044, 0.00351609, 0.0366493, 0.976913, 0.133333, 1, 0.253888, 0.000543364, 0.0522995, 0.965819, 0.166667, 1, 0.276831, -0.00104295, 0.0606, 0.959005, 0.2, 1, 0.28475, -0.00159322, 0.0634708, 0.956497, 0.233333, 1, 0.282628, -0.0014456, 0.0627012, 0.957177, 0.266667, 1, 0.275207, -0.000930285, 0.0600115, 0.95951, 0.3, 1, 0.267221, -0.000377028, 0.05712, 0.961941, 0.333333, 1, 0.263481, -0.000118477, 0.0557671, 0.963051)
+tracks/56/type = "method"
+tracks/56/imported = false
+tracks/56/enabled = true
+tracks/56/path = NodePath("..")
+tracks/56/interp = 1
+tracks/56/loop_wrap = true
+tracks/56/keys = {
+"times": PackedFloat32Array(0.333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"quit"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_i2un6"]
 resource_name = "Idle-to-Win"
@@ -7110,9 +7125,11 @@ states/Welcome-to-Talk/position = Vector2(315, 327.923)
 states/Win-to-Below/node = SubResource("AnimationNodeAnimation_lpeao")
 states/Win-to-Below/position = Vector2(1122, -11.077)
 transitions = ["Idle", "Up", SubResource("AnimationNodeStateMachineTransition_g3bl8"), "Idle", "Right", SubResource("AnimationNodeStateMachineTransition_e1doj"), "Idle", "Down", SubResource("AnimationNodeStateMachineTransition_s2btw"), "Idle", "Left", SubResource("AnimationNodeStateMachineTransition_nd1j7"), "Up", "Idle", SubResource("AnimationNodeStateMachineTransition_0j6gd"), "Right", "Idle", SubResource("AnimationNodeStateMachineTransition_wglbs"), "Down", "Idle", SubResource("AnimationNodeStateMachineTransition_eb7v3"), "Left", "Idle", SubResource("AnimationNodeStateMachineTransition_0e8g1"), "Start", "Hands_below", SubResource("AnimationNodeStateMachineTransition_le80d"), "Hands_below", "Welcome", SubResource("AnimationNodeStateMachineTransition_at5gr"), "Up", "Down", SubResource("AnimationNodeStateMachineTransition_867ri"), "Up", "Left", SubResource("AnimationNodeStateMachineTransition_jhea4"), "Up", "Right", SubResource("AnimationNodeStateMachineTransition_fq2ur"), "Left", "Up", SubResource("AnimationNodeStateMachineTransition_kktgd"), "Left", "Down", SubResource("AnimationNodeStateMachineTransition_3fkl8"), "Down", "Left", SubResource("AnimationNodeStateMachineTransition_36gyn"), "Down", "Up", SubResource("AnimationNodeStateMachineTransition_1pin7"), "Down", "Right", SubResource("AnimationNodeStateMachineTransition_7s3ni"), "Right", "Down", SubResource("AnimationNodeStateMachineTransition_d6qnf"), "Right", "Left", SubResource("AnimationNodeStateMachineTransition_hd8ew"), "Left", "Right", SubResource("AnimationNodeStateMachineTransition_2ic0n"), "Right", "Up", SubResource("AnimationNodeStateMachineTransition_sttl0"), "Welcome", "Welcome-to-Talk", SubResource("AnimationNodeStateMachineTransition_xcd5x"), "Welcome-to-Talk", "Talk", SubResource("AnimationNodeStateMachineTransition_bbvo6"), "Talk", "Talk-to-Idle", SubResource("AnimationNodeStateMachineTransition_5hr87"), "Talk-to-Idle", "Idle-to-Jump", SubResource("AnimationNodeStateMachineTransition_hubt4"), "Talk-to-Idle", "Idle", SubResource("AnimationNodeStateMachineTransition_ppaim"), "Idle", "Idle-to-Jump", SubResource("AnimationNodeStateMachineTransition_k71iy"), "Idle", "Idle-to-Win", SubResource("AnimationNodeStateMachineTransition_0bo48"), "Idle-to-Win", "Win-to-Below", SubResource("AnimationNodeStateMachineTransition_tblet"), "Win-to-Below", "Below-to-Gift", SubResource("AnimationNodeStateMachineTransition_utrlt"), "Below-to-Gift", "Gift-to-Open", SubResource("AnimationNodeStateMachineTransition_kjm13")]
-graph_offset = Vector2(-206, 85.923)
+graph_offset = Vector2(-55, 294.923)
 
-[node name="arms" type="Node3D"]
+[node name="arms" type="Node3D" node_paths=PackedStringArray("anim_tree")]
+script = ExtResource("1_n4mtf")
+anim_tree = NodePath("PSX_First_Person_Arms/AnimationTree")
 
 [node name="PSX_First_Person_Arms" type="Node3D" parent="."]
 
