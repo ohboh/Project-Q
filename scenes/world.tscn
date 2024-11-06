@@ -1,15 +1,95 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8038gt7fd1c1"]
+[gd_scene load_steps=8 format=3 uid="uid://b8038gt7fd1c1"]
 
 [ext_resource type="PackedScene" uid="uid://o4dlkvehjgla" path="res://scenes/arms.tscn" id="1_hcl8x"]
 [ext_resource type="PackedScene" uid="uid://dgal26ywsk8v5" path="res://scenes/box.tscn" id="2_8cxwn"]
+[ext_resource type="PackedScene" uid="uid://cdijw26kfifdc" path="res://models/old_table.glb" id="3_4swmn"]
+
+[sub_resource type="Animation" id="Animation_c7mt2"]
+resource_name = "pan_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.603552, 0, 0), Vector3(-0.121789, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.113771, -0.472162), Vector3(0, -0.0222838, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_o5smd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.121789, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.0222838, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7364w"]
+_data = {
+"RESET": SubResource("Animation_o5smd"),
+"pan_out": SubResource("Animation_c7mt2")
+}
+
+[sub_resource type="Environment" id="Environment_vo0op"]
+background_mode = 1
 
 [node name="world" type="Node3D"]
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0366338, 0)
+[node name="player" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.992593, 0.121488, 0, -0.121488, 0.992593, 0, -0.0222838, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="player"]
+libraries = {
+"": SubResource("AnimationLibrary_7364w")
+}
 
 [node name="arms" parent="." instance=ExtResource("1_hcl8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -1)
 
 [node name="box" parent="." instance=ExtResource("2_8cxwn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.480591, -0.907572)
+
+[node name="Table" parent="." instance=ExtResource("3_4swmn")]
+transform = Transform3D(0.015, 0, 0, 0, 0.015, 0, 0, 0, 0.015, 0, -1.7202, -1.20501)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vo0op")
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.037, 0)
+shadow_enabled = true
+spot_angle = 40.0
