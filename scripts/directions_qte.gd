@@ -9,17 +9,17 @@ var qte_duration: float = 3.0
 
 var directions: Array = [Direction.LEFT, Direction.RIGHT, Direction.DOWN, Direction.UP]
 var chosen_direction: Direction
-var swipe_vector: Vector2
-var swipe_threshold: float = 100
-var touch_start_position: Vector2 = Vector2.ZERO
-var swiped: bool = false
+var reset_to_idle: bool = false
 var directions_count: int = 0
-@export var directions_required_count: int = 5
+@export var directions_required_count: int = 50
+
+@export var player: Camera3D
 
 signal qte_started
 signal qte_success
 signal qte_failed
 signal display_direction(direction: Direction)
+signal idle
 
 func start_qte() -> void:
 	success_condition_met = false
@@ -38,50 +38,58 @@ func start_qte() -> void:
 		timer.start()
 
 func _input(event: InputEvent) -> void:
-	handle_directions(event)
-
-func handle_directions(event: InputEvent) -> void:
-	if event is InputEventScreenTouch:
-		if event.is_pressed():
-			touch_start_position = get_viewport().get_final_transform() * event.position
-		else:
-			swiped = false
-
-	if event is InputEventScreenDrag and not swiped:
-		var adjusted_position: Vector2 = get_viewport().get_final_transform() * event.position
-		swipe_vector = adjusted_position - touch_start_position
-		if swipe_vector.length() > swipe_threshold:
-			swiped = true
-			process_swipe_directions(swipe_vector)
-
-	if (event is InputEventKey or event is InputEventJoypadButton) and event.is_pressed() and not event.is_echo():
+	if (event is InputEventKey or event is InputEventJoypadButton) and event.is_pressed() and not event.is_echo() and Global.game_started and not reset_to_idle:
 		process_action_directions(event)
-
-
-func process_swipe_directions(_swipe_vector: Vector2) -> void:
-	var input_direction: Direction
-	if abs(swipe_vector.x) > abs(swipe_vector.y):
-		input_direction = Direction.RIGHT if swipe_vector.x > 0 else Direction.LEFT
-	else:
-		input_direction = Direction.UP if swipe_vector.y < 0 else Direction.DOWN
-	check_direction(input_direction)
 
 func process_action_directions(event: InputEvent) -> void:
 	var input_direction: Direction
 	if event.is_action_pressed("ui_left"):
 		input_direction = Direction.LEFT
+		player.anim_player.play("left")
 	elif event.is_action_pressed("ui_right"):
 		input_direction = Direction.RIGHT
+		player.anim_player.play("right")
 	elif event.is_action_pressed("ui_up"):
 		input_direction = Direction.UP
+		player.anim_player.play("up")
 	elif event.is_action_pressed("ui_down"):
 		input_direction = Direction.DOWN
+		player.anim_player.play("down")
 	check_direction(input_direction)
 
 func check_direction(direction: Direction) -> void:
 	if chosen_direction != direction:
 		directions_count += 1
 		print("hooray:", directions_count)
+		if directions_count <= 10:
+			reset_to_idle = true
+			idle.emit()
+			await get_tree().create_timer(randf_range(1,2)).timeout
+			reset_to_idle = false
+		elif directions_count <= 25:
+			reset_to_idle = true
+			idle.emit()
+			await get_tree().create_timer(randf_range(0.5,1)).timeout
+			reset_to_idle = false
+		elif directions_count <=40:
+			reset_to_idle = true
+			idle.emit()
+			await get_tree().create_timer(randf_range(0.5,1)).timeout
+			reset_to_idle = false
+			chosen_direction = directions.pick_random()
+			display_direction.emit(chosen_direction)
+			await get_tree().create_timer(randf_range(0.25,1)).timeout
+		elif directions_count <=50:
+			reset_to_idle = true
+			idle.emit()
+			await get_tree().create_timer(randf_range(0.5,1)).timeout
+			reset_to_idle = false
+			chosen_direction = directions.pick_random()
+			display_direction.emit(chosen_direction)
+			await get_tree().create_timer(randf_range(0,0.75)).timeout
+			chosen_direction = directions.pick_random()
+			display_direction.emit(chosen_direction)
+			await get_tree().create_timer(randf_range(0,0.75)).timeout
 		chosen_direction = directions.pick_random()
 		display_direction.emit(chosen_direction)
 	elif not success_condition_met:

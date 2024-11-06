@@ -1,0 +1,10 @@
+[style name="custom_style"]
+[signal arg="game_end"]
+hand: great job...
+[signal arg="get_reward"]
+hand: i have a reward for you.
+[signal arg="show_hand"]
+hand: here it is.
+hand: open it.
+- open hand
+	[signal arg="open_hand"]

@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 RuntimeDebugTools="*res://addons/runtime_debug_tools/scenes/remote_inspector.tscn"
 EmbedGameAutoload="*res://addons/fabimakesgames.embed_game/embed_game_autoload.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+Global="*res://scripts/global.gd"
 
 [dialogic]
 
@@ -27,9 +28,10 @@ directories/dch_directory={
 "hand": "res://dialogic/hand.dch"
 }
 directories/dtl_directory={
-"timeline": "res://dialogic/timeline.dtl"
+"timeline": "res://dialogic/timeline.dtl",
+"timeline_win": "res://dialogic/timeline_win.dtl"
 }
-layout/style_list=["res://dialogic/custom_style.tres"]
+layout/style_list=["res://dialogic/custom_style.tres", "res://dialogic/custom_style_noncenter.tres"]
 layout/default_style="res://dialogic/custom_style.tres"
 glossary/default_case_sensitive=true
 extensions_folder="res://addons/dialogic_additions"

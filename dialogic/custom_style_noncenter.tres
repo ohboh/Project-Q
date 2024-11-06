@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="DialogicStyle" load_steps=8 format=3 uid="uid://bfmn3msfgf71h"]
+
+[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="1_v8up8"]
+[ext_resource type="PackedScene" uid="uid://bquja8jyk8kbr" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/vn_textbox_layer.tscn" id="2_ieuef"]
+[ext_resource type="PackedScene" uid="uid://dhk6j6eb6e3q" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Choices/vn_choice_layer.tscn" id="3_s7run"]
+[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style.gd" id="4_dwrki"]
+
+[sub_resource type="Resource" id="Resource_qqk1l"]
+script = ExtResource("1_v8up8")
+overrides = {
+"global_bg_color": "Color(0, 0, 0, 0.101961)",
+"global_font": "\"res://dialogic/Roman_New_Times.ttf\"",
+"global_font_size": "40.0"
+}
+
+[sub_resource type="Resource" id="Resource_l17u1"]
+script = ExtResource("1_v8up8")
+scene = ExtResource("2_ieuef")
+overrides = {
+"box_size": "Vector2(550, 75)",
+"name_label_custom_font_size": "49.0",
+"name_label_use_global_font_size": "false",
+"text_alignment": "1",
+"text_size": "40.0",
+"text_use_global_size": "false"
+}
+
+[sub_resource type="Resource" id="Resource_x7vkx"]
+script = ExtResource("1_v8up8")
+scene = ExtResource("3_s7run")
+overrides = {
+"boxes_offset": "Vector2(-100, 0)",
+"font_size_custom": "40.0",
+"font_size_use_global": "false"
+}
+
+[resource]
+script = ExtResource("4_dwrki")
+name = "custom_style_noncenter"
+layer_list = Array[String](["10", "11"])
+layer_info = {
+"": SubResource("Resource_qqk1l"),
+"10": SubResource("Resource_l17u1"),
+"11": SubResource("Resource_x7vkx")
+}
+base_overrides = {}
+layers = Array[ExtResource("1_v8up8")]([])
+metadata/_latest_layer = ""

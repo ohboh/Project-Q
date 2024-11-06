@@ -1,6 +1,7 @@
 [wait time="5.0" skippable="true"]
 - open box
 	[signal arg="box_open"]
+[style name="custom_style_noncenter"]
 [wait time="2.0"]
 hand: hello
 [signal arg="ask_question"]
