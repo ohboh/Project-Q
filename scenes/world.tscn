@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8038gt7fd1c1"]
+[gd_scene load_steps=3 format=3 uid="uid://b8038gt7fd1c1"]
 
 [ext_resource type="PackedScene" uid="uid://o4dlkvehjgla" path="res://scenes/arms.tscn" id="1_hcl8x"]
+[ext_resource type="PackedScene" uid="uid://dgal26ywsk8v5" path="res://scenes/box.tscn" id="2_8cxwn"]
 
 [node name="world" type="Node3D"]
 
@@ -9,3 +10,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0366338, 0)
 
 [node name="arms" parent="." instance=ExtResource("1_hcl8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -1)
+
+[node name="box" parent="." instance=ExtResource("2_8cxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.480591, -0.907572)
