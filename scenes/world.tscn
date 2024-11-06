@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://b8038gt7fd1c1"]
+[gd_scene load_steps=15 format=3 uid="uid://b8038gt7fd1c1"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_3bc4i"]
 [ext_resource type="PackedScene" uid="uid://o4dlkvehjgla" path="res://scenes/arms.tscn" id="1_hcl8x"]
 [ext_resource type="PackedScene" uid="uid://dgal26ywsk8v5" path="res://scenes/box.tscn" id="2_8cxwn"]
 [ext_resource type="PackedScene" uid="uid://cdijw26kfifdc" path="res://models/old_table.glb" id="3_4swmn"]
+[ext_resource type="PackedScene" uid="uid://dererxcxk2aee" path="res://scenes/shaders.tscn" id="5_8x8vy"]
 
 [sub_resource type="Animation" id="Animation_c7mt2"]
 resource_name = "pan_out"
@@ -196,3 +197,5 @@ environment = SubResource("Environment_vo0op")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.037, 0)
 shadow_enabled = true
 spot_angle = 40.0
+
+[node name="shaders" parent="." instance=ExtResource("5_8x8vy")]

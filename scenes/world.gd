@@ -13,8 +13,9 @@ func _on_dialogic_signal(argument: String):
 	match argument:
 		"box_open":
 			box.open_box()
-			arms.anim_state.travel("Welcome")
 			player_animator.play("pan_out")
+			await get_tree().create_timer(0.5).timeout
+			arms.anim_state.travel("Welcome")
 		"ask_question":
 			arms.anim_state.travel("Welcome-to-Talk")
 		"refused_play", "start_game":

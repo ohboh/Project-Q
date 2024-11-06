@@ -20,7 +20,6 @@ config/icon="res://icon.svg"
 RuntimeDebugTools="*res://addons/runtime_debug_tools/scenes/remote_inspector.tscn"
 EmbedGameAutoload="*res://addons/fabimakesgames.embed_game/embed_game_autoload.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
-Quitter="*res://scripts/quitter.gd"
 
 [dialogic]
 

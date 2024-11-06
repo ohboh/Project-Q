@@ -1,10 +1,8 @@
 extends Node
 
-enum QTEType { MASH_ANY_BUTTON, DIRECTIONS, COINFLIP, OTHER_TYPE }
 enum Direction { LEFT, RIGHT, UP, DOWN }
 
 var qte_active: bool = false
-var qte_type: QTEType
 var success_condition_met: bool = false
 var wait_until_satisfied: bool = true
 var qte_duration: float = 3.0

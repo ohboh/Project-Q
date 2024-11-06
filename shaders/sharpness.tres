@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://brwrq1qk17oxk"]
+
+[ext_resource type="Shader" path="res://shaders/Sharpness.gdshader" id="1_xgsky"]
+
+[resource]
+shader = ExtResource("1_xgsky")
+shader_parameter/sharpen_amount = 1.0

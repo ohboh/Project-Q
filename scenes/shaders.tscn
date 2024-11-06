@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://dererxcxk2aee"]
+
+[ext_resource type="Material" uid="uid://brwrq1qk17oxk" path="res://shaders/sharpness.tres" id="1_m7kmq"]
+[ext_resource type="Material" uid="uid://be3w0r1cbibox" path="res://shaders/grain.tres" id="2_d8nw4"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_4n6we"]
+
+[node name="shaders" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Sharpness" type="TextureRect" parent="CanvasLayer2"]
+material = ExtResource("1_m7kmq")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_4n6we")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Grain" type="TextureRect" parent="CanvasLayer"]
+material = ExtResource("2_d8nw4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_4n6we")
