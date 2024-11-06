@@ -5,6 +5,7 @@
 [node name="world" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0366338, 0)
 
 [node name="arms" parent="." instance=ExtResource("1_hcl8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -1)
