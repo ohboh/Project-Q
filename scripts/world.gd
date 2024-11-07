@@ -5,6 +5,7 @@ extends Node3D
 @export var player_animator: AnimationPlayer
 @export var arms: Node3D
 @export var game_logic: Node
+@export var credits: Control
 
 func _ready() -> void:
 	Dialogic.start("timeline")
@@ -40,7 +41,10 @@ func _on_dialogic_signal(argument: String):
 			arms.anim_state.travel("Below-to-Gift")
 		"open_hand":
 			arms.anim_state.travel("Gift-to-Open")
-			
+			await get_tree().create_timer(3).timeout
+			credits.show()
+			await get_tree().create_timer(10).timeout
+			get_tree().quit()
 
 func _on_game_logic_qte_success() -> void:
 	Dialogic.start("timeline_win")

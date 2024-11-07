@@ -10,7 +10,7 @@
 script = ExtResource("1_y28xg")
 scene = ExtResource("1_emvcg")
 overrides = {
-"global_bg_color": "Color(0, 0, 0, 0)",
+"global_bg_color": "Color(0, 0, 0, 0.12549)",
 "global_font": "\"res://dialogic/Roman_New_Times.ttf\"",
 "global_font_size": "40.0"
 }
@@ -19,7 +19,7 @@ overrides = {
 script = ExtResource("1_y28xg")
 scene = ExtResource("2_xjdg6")
 overrides = {
-"box_size": "Vector2(550, 75)",
+"box_size": "Vector2(550, 70)",
 "name_label_custom_font_size": "49.0",
 "name_label_use_global_font_size": "false",
 "text_alignment": "1",
@@ -47,4 +47,4 @@ layer_info = {
 }
 base_overrides = {}
 layers = Array[ExtResource("1_y28xg")]([])
-metadata/_latest_layer = ""
+metadata/_latest_layer = "10"
