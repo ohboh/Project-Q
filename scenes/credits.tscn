@@ -1,0 +1,101 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuq1bppe1n7ii"]
+
+[ext_resource type="FontFile" uid="uid://bisgsxwa3odvx" path="res://dialogic/Roman_New_Times.ttf" id="1_ktp8e"]
+[ext_resource type="Texture2D" uid="uid://d4marqup12fjw" path="res://yaji_logo.png" id="2_s6nvf"]
+
+[node name="credits" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="upper credits" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -36.5
+offset_top = 32.0
+offset_right = 36.5
+offset_bottom = 55.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_ktp8e")
+theme_override_font_sizes/font_size = 25
+text = "a minigame by:"
+horizontal_alignment = 1
+
+[node name="yaji" type="TextureRect" parent="upper credits"]
+layout_mode = 0
+offset_left = 11.5
+offset_top = 7.0
+offset_right = 111.5
+offset_bottom = 107.0
+texture = ExtResource("2_s6nvf")
+
+[node name="left credits" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -79.5
+offset_right = 113.0
+offset_bottom = -54.5
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_ktp8e")
+theme_override_font_sizes/font_size = 25
+text = "3d models:
+"
+horizontal_alignment = 1
+
+[node name="left credits" type="Label" parent="left credits"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 18.0
+offset_top = 22.5
+offset_right = 227.0
+offset_bottom = 85.5
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_ktp8e")
+theme_override_font_sizes/font_size = 17
+text = "Cardboard box by Andrew.Mischenko
+PSX Godot Robot Plushie by Levrault
+PSX First Person Arms by Drillimpact"
+
+[node name="right credits" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -113.0
+offset_top = -79.5
+offset_bottom = -54.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_ktp8e")
+theme_override_font_sizes/font_size = 25
+text = "audio:
+"
+horizontal_alignment = 1
+
+[node name="right credits" type="Label" parent="right credits"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -164.0
+offset_top = 22.5
+offset_bottom = 85.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_ktp8e")
+theme_override_font_sizes/font_size = 17
+text = "Piano Slam by Rvgerxini"

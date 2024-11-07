@@ -10,15 +10,14 @@ config_version=5
 
 [application]
 
-config/name="Project Q"
+config/name="unboxing"
+config/version="1.0"
 run/main_scene="res://scenes/world.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://box_icon.png"
 
 [autoload]
 
-RuntimeDebugTools="*res://addons/runtime_debug_tools/scenes/remote_inspector.tscn"
-EmbedGameAutoload="*res://addons/fabimakesgames.embed_game/embed_game_autoload.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 Global="*res://scripts/global.gd"
 
@@ -67,7 +66,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/fabimakesgames.embed_game/plugin.cfg", "res://addons/runtime_debug_tools/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
 
 [input]
 
