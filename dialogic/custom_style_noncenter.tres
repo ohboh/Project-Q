@@ -8,7 +8,7 @@
 [sub_resource type="Resource" id="Resource_qqk1l"]
 script = ExtResource("1_v8up8")
 overrides = {
-"global_bg_color": "Color(0, 0, 0, 0.101961)",
+"global_bg_color": "Color(0, 0, 0, 0)",
 "global_font": "\"res://dialogic/Roman_New_Times.ttf\"",
 "global_font_size": "40.0"
 }
@@ -30,7 +30,7 @@ script = ExtResource("1_v8up8")
 scene = ExtResource("3_s7run")
 overrides = {
 "boxes_offset": "Vector2(-100, 0)",
-"font_size_custom": "40.0",
+"font_size_custom": "20.0",
 "font_size_use_global": "false"
 }
 

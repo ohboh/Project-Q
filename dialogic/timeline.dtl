@@ -3,14 +3,14 @@
 	[signal arg="box_open"]
 [style name="custom_style_noncenter"]
 [wait time="2.0"]
-hand: hello
+hello.
 [signal arg="ask_question"]
-hand: do you wanna play?
+\do you wanna play?
 - no
 	[signal arg="refused_play"]
-	hand: very well then...
+	very well then...
 	[signal arg="refused_jumpscare"]
 - ye
-	hand: only one rule...
-	hand: DO NOT FOLLOW MY FINGER
+	only one rule...
+	DO NOT FOLLOW MY FINGER.
 	[signal arg="start_game"]

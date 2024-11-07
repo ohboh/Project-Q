@@ -56,6 +56,15 @@ save/encryption_on_exports_only=true
 text/autopauses={}
 variables={}
 
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/mode=3
+window/size/window_width_override=1920
+window/size/window_height_override=1080
+window/stretch/mode="viewport"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/fabimakesgames.embed_game/plugin.cfg", "res://addons/runtime_debug_tools/plugin.cfg")
