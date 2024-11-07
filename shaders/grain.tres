@@ -4,4 +4,4 @@
 
 [resource]
 shader = ExtResource("1_uvohx")
-shader_parameter/amount = 0.05
+shader_parameter/amount = 0.03

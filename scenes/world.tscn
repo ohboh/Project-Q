@@ -208,7 +208,6 @@ spot_angle = 40.0
 
 [node name="game_logic" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("6_gvuvy")
-directions_required_count = 1
 player = NodePath("../player")
 
 [connection signal="display_direction" from="game_logic" to="arms" method="_on_game_logic_display_direction"]
