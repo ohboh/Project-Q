@@ -6,6 +6,7 @@ var qte_active: bool = false
 var success_condition_met: bool = false
 var wait_until_satisfied: bool = true
 var qte_duration: float = 3.0
+var game_lost: bool = false
 
 var directions: Array = [Direction.LEFT, Direction.RIGHT, Direction.DOWN, Direction.UP]
 var chosen_direction: Direction
@@ -38,7 +39,7 @@ func start_qte() -> void:
 		timer.start()
 
 func _input(event: InputEvent) -> void:
-	if (event is InputEventKey or event is InputEventJoypadButton) and event.is_pressed() and not event.is_echo() and Global.game_started and not reset_to_idle:
+	if (event is InputEventKey or event is InputEventJoypadButton) and event.is_pressed() and not event.is_echo() and Global.game_started and not reset_to_idle and not game_lost:
 		process_action_directions(event)
 
 func process_action_directions(event: InputEvent) -> void:
@@ -46,16 +47,19 @@ func process_action_directions(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_left"):
 		input_direction = Direction.LEFT
 		player.anim_player.play("left")
+		check_direction(input_direction)
 	elif event.is_action_pressed("ui_right"):
 		input_direction = Direction.RIGHT
 		player.anim_player.play("right")
+		check_direction(input_direction)
 	elif event.is_action_pressed("ui_up"):
 		input_direction = Direction.UP
 		player.anim_player.play("up")
+		check_direction(input_direction)
 	elif event.is_action_pressed("ui_down"):
 		input_direction = Direction.DOWN
 		player.anim_player.play("down")
-	check_direction(input_direction)
+		check_direction(input_direction)
 
 func check_direction(direction: Direction) -> void:
 	if chosen_direction != direction:
@@ -93,7 +97,7 @@ func check_direction(direction: Direction) -> void:
 		chosen_direction = directions.pick_random()
 		display_direction.emit(chosen_direction)
 	elif not success_condition_met:
-		print("aw")
+		game_lost = true
 		end_qte(false)
 	
 	if directions_count >= directions_required_count:

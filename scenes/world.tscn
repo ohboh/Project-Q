@@ -170,13 +170,14 @@ _data = {
 [sub_resource type="Environment" id="Environment_vo0op"]
 background_mode = 1
 
-[node name="world" type="Node3D" node_paths=PackedStringArray("box", "player", "player_animator", "arms", "game_logic")]
+[node name="world" type="Node3D" node_paths=PackedStringArray("box", "player", "player_animator", "arms", "game_logic", "credits")]
 script = ExtResource("1_3bc4i")
 box = NodePath("box")
 player = NodePath("player")
 player_animator = NodePath("player/AnimationPlayer")
 arms = NodePath("arms")
 game_logic = NodePath("game_logic")
+credits = NodePath("credits")
 
 [node name="player" type="Camera3D" parent="." node_paths=PackedStringArray("anim_player")]
 transform = Transform3D(1, 0, 0, 0, 0.992593, 0.121488, 0, -0.121488, 0.992593, 0, -0.0222838, 0)
